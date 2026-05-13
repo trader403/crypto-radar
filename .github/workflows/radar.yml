@@ -2,7 +2,7 @@ name: Crypto Radar
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '*/30 * * * *'   # 每30分钟
   workflow_dispatch:
 
 jobs:
@@ -16,9 +16,6 @@ jobs:
       - name: 安装依赖
         run: pip install requests
       - name: 运行抓取
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python fetch_data.py
       - name: 提交 data.json
         run: |
