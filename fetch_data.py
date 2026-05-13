@@ -1,6 +1,5 @@
 import requests
 import json
-import os
 from datetime import datetime, timezone
 
 OUTPUT_FILE = "data.json"
@@ -95,35 +94,6 @@ def get_panews_news():
     except Exception as e:
         return [{"error": f"PANews: {str(e)}"}]
 
-# ========== 规则引擎：盈利阈值判断 ==========
-def check_opportunities(funding_rates):
-    alerts = []
-    for asset in funding_rates:
-        if "error" in asset:
-            continue
-        rate = float(asset.get("funding_rate", 0))
-        oi = float(asset.get("open_interest", 0))
-        symbol = asset["symbol"]
-        # 负费率绝对值 > 0.03% 且 OI > 100万美元 → 空头拥挤
-        if rate < -0.0003 and oi > 1_000_000:
-            alerts.append(f"🔥 {symbol} 负费率 {rate:.6f}，空头拥挤 (年化~{abs(rate)*8760*100:.1f}%)")
-        # 正费率 > 0.05% → 多头拥挤
-        if rate > 0.0005:
-            alerts.append(f"📈 {symbol} 正费率 {rate:.6f}，多头拥挤")
-    return alerts
-
-# ========== Telegram 推送 ==========
-def send_telegram(text):
-    token = os.environ.get("TELEGRAM_TOKEN")
-    chat_id = os.environ.get("TELEGRAM_CHAT_ID")
-    if not token or not chat_id:
-        return
-    url = f"https://api.telegram.org/bot{token}/sendMessage"
-    try:
-        requests.post(url, json={"chat_id": chat_id, "text": text[:4000]}, timeout=10)
-    except:
-        pass
-
 # ========== 主流程 ==========
 if __name__ == "__main__":
     funding = get_hyperliquid_funding()
@@ -141,12 +111,4 @@ if __name__ == "__main__":
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=2)
-
-    # 生成告警消息
-    opportunity_alerts = check_opportunities(funding)
-    if opportunity_alerts:
-        msg = "🚨 套利雷达告警\n" + "\n".join(opportunity_alerts)
-        send_telegram(msg)
-        print("📤 已发送 Telegram 告警")
-    else:
-        print("✅ 无套利告警")
+    print(f"✅ 数据已保存到 {OUTPUT_FILE}")
