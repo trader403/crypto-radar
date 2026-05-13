@@ -1,94 +1,108 @@
 import requests
 import json
-import os
+import time
 from datetime import datetime, timezone
 
-# ========== 配置 ==========
-# 监控的合约标的（大写，会匹配包含这些关键词的交易对）
+# ========== 你的监控标的 (Hyperliquid 上的代币名) ==========
 TARGETS = ["ANTHROPIC", "SPACEX", "OPENAI"]
-# 高APY新池最低阈值
-MIN_APY = 50
-# 输出文件
 OUTPUT_FILE = "data.json"
 
-# ========== 1. 资金费率 (CoinGecko) ==========
-def get_funding_rates():
-    url = "https://api.coingecko.com/api/v3/derivatives/exchanges"
+def get_funding_rates_from_hyperliquid():
+    """从 Hyperliquid 公共 API 获取资金费率"""
+    url = "https://api.hyperliquid.xyz/info"
+    payload = {"type": "metaAndAssetCtxs"}
     try:
-        resp = requests.get(url, timeout=15)
+        resp = requests.post(url, json=payload, timeout=15)
         data = resp.json()
+        
         results = []
-        for exchange in data:
-            for ticker in exchange.get("tickers", []):
-                sym = ticker.get("symbol", "").upper()
-                if any(t in sym for t in TARGETS):
-                    results.append({
-                        "exchange": exchange.get("name"),
-                        "symbol": ticker.get("symbol"),
-                        "funding_rate": ticker.get("funding_rate"),
-                        "index_price": ticker.get("index_price")
-                    })
+        # 第一部分是 universe (元数据)，第二部分是 assetCtxs (实时数据)
+        asset_ctxs = data[1] if len(data) > 1 else []
+        
+        for item in asset_ctxs:
+            coin = item.get("coin", "")
+            if any(t in coin.upper() for t in TARGETS):
+                results.append({
+                    "exchange": "Hyperliquid",
+                    "symbol": coin,
+                    "funding_rate": item.get("funding"),
+                    "mark_price": item.get("markPx"),
+                    "open_interest": item.get("openInterest"),
+                    "premium": item.get("premium"),
+                    "day_volume": item.get("dayNtlVlm")
+                })
         return results
     except Exception as e:
-        return [{"error": str(e)}]
+        return [{"error": f"Hyperliquid: {str(e)}"}]
 
-# ========== 2. DeFi 新池/高APY (DeFiLlama) ==========
-def get_high_apy_pools():
-    url = "https://yields.llama.fi/pools"
+def get_funding_rates_from_coinglass():
+    """从 CoinGlass 获取资金费率 (需要 API Key)"""
+    # 你需要先在 coinglass.com 注册，获取免费 API Key
+    # 免费版每月 30,000 次请求
+    import os
+    api_key = os.environ.get("COINGLASS_API_KEY", "")
+    if not api_key:
+        return [{"error": "CoinGlass: API Key 未设置 (环境变量 COINGLASS_API_KEY)"}]
+    
+    url = "https://open-api-v2.coinglass.com/api/funding-rate/list"
+    headers = {"accept": "application/json", "coinglassSecret": api_key}
     try:
-        resp = requests.get(url, timeout=20)
+        resp = requests.get(url, headers=headers, timeout=15)
         data = resp.json()
-        fresh = []
-        now = datetime.now(timezone.utc)
-        for pool in data.get("data", []):
-            apy = pool.get("apy", 0)
-            if apy < MIN_APY:
-                continue
-            created_str = pool.get("created_at")
-            if created_str:
-                created = datetime.strptime(created_str, "%Y-%m-%dT%H:%M:%S.%fZ").replace(tzinfo=timezone.utc)
-                if (now - created).total_seconds() < 86400:  # 24小时内
-                    fresh.append({
-                        "chain": pool["chain"],
-                        "project": pool["project"],
-                        "symbol": pool["symbol"],
-                        "apy": apy,
-                        "tvlUsd": pool.get("tvlUsd")
+        # CoinGlass 返回所有交易对的费率，筛选你的目标
+        results = []
+        if data.get("code") == "200" and "data" in data:
+            for item in data["data"]:
+                symbol = item.get("symbol", "").upper()
+                exchange = item.get("exchangeName", "")
+                rate = item.get("fundingRate", 0)
+                if any(t in symbol for t in TARGETS):
+                    results.append({
+                        "exchange": exchange,
+                        "symbol": symbol,
+                        "funding_rate": rate,
+                        "index_price": item.get("indexPrice")
                     })
-        return sorted(fresh, key=lambda x: x["apy"], reverse=True)
+        # 按费率降序排列，方便快速查看
+        results.sort(key=lambda x: abs(float(x.get("funding_rate", 0))), reverse=True)
+        return results[:20]
     except Exception as e:
-        return [{"error": str(e)}]
+        return [{"error": f"CoinGlass: {str(e)}"}]
 
-# ========== 3. 安全快讯 (PANews RSS) ==========
 def get_security_news():
-    url = "https://panewslab.com/zh/rss"
+    """从 The Block 获取安全新闻"""
+    url = "https://www.theblock.co/api/news/feed"
     try:
         resp = requests.get(url, timeout=15)
-        # 简单解析XML
+        data = resp.json()
         items = []
-        content = resp.text
-        parts = content.split("<item>")
-        for part in parts[1:]:
-            title_start = part.find("<title>") + 7
-            title_end = part.find("</title>")
-            title = part[title_start:title_end]
-            if any(kw in title for kw in ["攻击", "漏洞", "脱锚", "黑客", "盗取"]):
-                link_start = part.find("<link>") + 6
-                link_end = part.find("</link>")
-                link = part[link_start:link_end]
-                items.append({"title": title, "link": link})
+        keywords = ["hack", "exploit", "security", "attack", "depegged"]
+        for article in data.get("articles", [])[:30]:
+            title = article.get("title", "")
+            if any(kw in title.lower() for kw in keywords):
+                items.append({
+                    "title": title,
+                    "url": article.get("url", "")
+                })
         return items[:5]
     except Exception as e:
         return [{"error": str(e)}]
 
-# ========== 主函数 ==========
 if __name__ == "__main__":
+    # 先获取最靠谱的 Hyperliquid 数据
+    funding_rates = get_funding_rates_from_hyperliquid()
+    
+    # 如果 CoinGlass Key 已设置，也获取一份做交叉验证
+    coinglass_rates = get_funding_rates_from_coinglass()
+    if "error" not in coinglass_rates[0] if coinglass_rates else True:
+        funding_rates.extend(coinglass_rates)
+    
     report = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
-        "funding_rates": get_funding_rates(),
-        "high_apy_pools": get_high_apy_pools(),
+        "funding_rates": funding_rates,
         "security_news": get_security_news()
     }
+    
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=2)
-    print(f"✅ 数据已保存到 {OUTPUT_FILE}")
+    print(f"✅ 数据已保存到 {OUTPUT_FILE}，共 {len(funding_rates)} 条费率记录")
