@@ -15,7 +15,7 @@ jobs:
           python-version: '3.11'
       - name: 安装依赖
         run: |
-          pip install requests market-feed
+          pip install requests yfinance
       - name: 运行抓取
         run: python fetch_data.py
       - name: 提交 data.json
