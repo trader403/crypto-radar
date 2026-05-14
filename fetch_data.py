@@ -1,6 +1,7 @@
 import requests
 import json
 import os
+import yfinance as yf
 from datetime import datetime, timezone
 
 # ============================================================
@@ -109,24 +110,18 @@ def get_panews_news():
 # 5. 美股行情 – 使用 market‑feed (无需 API Key)
 # ============================================================
 def get_us_stocks():
-    try:
-        from marketfeed import MarketFeed
-    except ImportError:
-        return [{"error": "marketfeed 库未安装"}]
-
     symbols = ["AAPL", "TSLA", "MSFT", "SPY", "QQQ"]
-    feed = MarketFeed()
     quotes = []
     for sym in symbols:
         try:
-            # quote() 返回一个字典，包含 price, change, change_percent, volume 等
-            q = feed.quote(sym)
+            ticker = yf.Ticker(sym)
+            info = ticker.info
             quotes.append({
                 "symbol": sym,
-                "price": q.get("price", q.get("regularMarketPrice")),
-                "change_percent": q.get("change_percent", q.get("regularMarketChangePercent")),
-                "volume": q.get("volume", q.get("regularMarketVolume")),
-                "source": q.get("source", "")
+                "price": info.get("regularMarketPrice") or info.get("currentPrice"),
+                "change_percent": info.get("regularMarketChangePercent") or info.get("currentPercentChange"),
+                "volume": info.get("regularMarketVolume") or info.get("volume"),
+                "market_state": info.get("marketState")
             })
         except Exception as e:
             quotes.append({"symbol": sym, "error": str(e)})
