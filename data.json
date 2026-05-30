@@ -1,245 +1,245 @@
 {
-  "timestamp": "2026-05-30T15:46:36.948392+00:00",
+  "timestamp": "2026-05-30T17:05:36.642199+00:00",
   "top_30_funding": [
     {
-      "symbol": "MEME",
-      "funding_rate": "-0.0001496448",
-      "mark_price": "0.000545",
-      "open_interest": "886766066.0",
-      "premium": "0.0",
-      "day_volume": "446667.2467640002"
+      "symbol": "ME",
+      "funding_rate": "-0.0001210389",
+      "mark_price": "0.08571",
+      "open_interest": "2348369.6000000001",
+      "premium": "-0.0011630612",
+      "day_volume": "87034.593827"
+    },
+    {
+      "symbol": "SNX",
+      "funding_rate": "-0.0000869752",
+      "mark_price": "0.29782",
+      "open_interest": "2308651.7999999998",
+      "premium": "-0.0007040129",
+      "day_volume": "422615.1251390001"
+    },
+    {
+      "symbol": "XMR",
+      "funding_rate": "0.0000667069",
+      "mark_price": "376.54",
+      "open_interest": "105035.642",
+      "premium": "0.0012974928",
+      "day_volume": "35258316.360679999"
     },
     {
       "symbol": "STABLE",
-      "funding_rate": "-0.0001060997",
-      "mark_price": "0.036245",
-      "open_interest": "68627952.0",
-      "premium": "-0.003628866",
-      "day_volume": "485187.8065639999"
-    },
-    {
-      "symbol": "JUP",
-      "funding_rate": "-0.0000811023",
-      "mark_price": "0.18445",
-      "open_interest": "20454482.0",
-      "premium": "-0.0011529093",
-      "day_volume": "969240.35743"
-    },
-    {
-      "symbol": "IO",
-      "funding_rate": "-0.0000796371",
-      "mark_price": "0.17728",
-      "open_interest": "3681157.3999999999",
-      "premium": "-0.0007878447",
-      "day_volume": "1278339.442122"
-    },
-    {
-      "symbol": "ZORA",
-      "funding_rate": "-0.0000680051",
-      "mark_price": "0.009812",
-      "open_interest": "99098968.0",
-      "premium": "-0.0013211382",
-      "day_volume": "165064.100156"
-    },
-    {
-      "symbol": "MOVE",
-      "funding_rate": "-0.0000657101",
-      "mark_price": "0.014863",
-      "open_interest": "22126460.0",
-      "premium": "-0.0003356831",
-      "day_volume": "126558.311928"
-    },
-    {
-      "symbol": "ME",
-      "funding_rate": "-0.0000617019",
-      "mark_price": "0.08515",
-      "open_interest": "2440979.7999999998",
-      "premium": "-0.0004684389",
-      "day_volume": "83832.675916"
+      "funding_rate": "-0.000063928",
+      "mark_price": "0.036792",
+      "open_interest": "68542262.0",
+      "premium": "-0.0015177386",
+      "day_volume": "471549.8506919998"
     },
     {
       "symbol": "ALT",
-      "funding_rate": "-0.0000573426",
-      "mark_price": "0.00689",
-      "open_interest": "100050196.0",
-      "premium": "-0.0004347826",
-      "day_volume": "215789.6101910001"
+      "funding_rate": "-0.0000517269",
+      "mark_price": "0.006889",
+      "open_interest": "99973316.0",
+      "premium": "-0.0002898551",
+      "day_volume": "189968.609284"
     },
     {
-      "symbol": "TRX",
-      "funding_rate": "-0.0000516455",
-      "mark_price": "0.34661",
-      "open_interest": "42734234.0",
-      "premium": "-0.000925072",
-      "day_volume": "3527869.4293400003"
+      "symbol": "2Z",
+      "funding_rate": "-0.0000465482",
+      "mark_price": "0.092712",
+      "open_interest": "9925380.0",
+      "premium": "0.0",
+      "day_volume": "282198.8300669999"
     },
     {
-      "symbol": "APEX",
-      "funding_rate": "0.000049342",
-      "mark_price": "0.31455",
-      "open_interest": "6151794.0",
-      "premium": "0.0021106329",
-      "day_volume": "91428.51024"
+      "symbol": "JUP",
+      "funding_rate": "-0.0000412919",
+      "mark_price": "0.18488",
+      "open_interest": "20487898.0",
+      "premium": "-0.0004859611",
+      "day_volume": "866928.9924899999"
     },
     {
-      "symbol": "0G",
-      "funding_rate": "-0.0000461657",
-      "mark_price": "0.42727",
-      "open_interest": "814120.0",
-      "premium": "-0.000271028",
-      "day_volume": "49503.35849"
-    },
-    {
-      "symbol": "DYDX",
-      "funding_rate": "0.0000448353",
-      "mark_price": "0.18943",
-      "open_interest": "31856589.6000000015",
-      "premium": "0.0006344842",
-      "day_volume": "978082.301254"
-    },
-    {
-      "symbol": "NXPC",
-      "funding_rate": "-0.0000409212",
-      "mark_price": "0.4162",
-      "open_interest": "2866644.0",
-      "premium": "-0.0003211889",
-      "day_volume": "542358.1090899999"
-    },
-    {
-      "symbol": "KAITO",
-      "funding_rate": "-0.0000408361",
-      "mark_price": "0.4546",
-      "open_interest": "1841590.0",
-      "premium": "-0.0005755712",
-      "day_volume": "131095.98391"
-    },
-    {
-      "symbol": "CHIP",
-      "funding_rate": "-0.0000399076",
-      "mark_price": "0.038719",
-      "open_interest": "142657218.0",
-      "premium": "-0.0000516196",
-      "day_volume": "456969.4664099999"
-    },
-    {
-      "symbol": "POLYX",
-      "funding_rate": "-0.0000394648",
-      "mark_price": "0.048465",
-      "open_interest": "4115100.0",
-      "premium": "-0.0021604938",
-      "day_volume": "214282.5281319999"
+      "symbol": "MON",
+      "funding_rate": "-0.0000394519",
+      "mark_price": "0.02364",
+      "open_interest": "1298196686.0",
+      "premium": "-0.0010137276",
+      "day_volume": "1214502.683214"
     },
     {
       "symbol": "BCH",
-      "funding_rate": "-0.0000390182",
-      "mark_price": "305.78",
-      "open_interest": "21997.614",
-      "premium": "-0.0006861624",
-      "day_volume": "2117422.4094599998"
-    },
-    {
-      "symbol": "WCT",
-      "funding_rate": "-0.0000369709",
-      "mark_price": "0.055094",
-      "open_interest": "3637320.0",
-      "premium": "-0.001304466",
-      "day_volume": "63426.512559"
-    },
-    {
-      "symbol": "kLUNC",
-      "funding_rate": "-0.0000367629",
-      "mark_price": "0.080321",
-      "open_interest": "10123360.0",
-      "premium": "-0.0006713913",
-      "day_volume": "269771.9948359999"
-    },
-    {
-      "symbol": "ADA",
-      "funding_rate": "-0.000035302",
-      "mark_price": "0.23633",
-      "open_interest": "77693460.0",
-      "premium": "-0.0008793067",
-      "day_volume": "5080372.3093300005"
-    },
-    {
-      "symbol": "kNEIRO",
-      "funding_rate": "-0.0000348099",
-      "mark_price": "0.08011",
-      "open_interest": "1136319.3999999999",
-      "premium": "-0.0006228201",
-      "day_volume": "189496.090556"
-    },
-    {
-      "symbol": "ASTER",
-      "funding_rate": "-0.000034643",
-      "mark_price": "0.71461",
-      "open_interest": "64433724.0",
-      "premium": "-0.000882024",
-      "day_volume": "13492944.2923600059"
-    },
-    {
-      "symbol": "TRUMP",
-      "funding_rate": "-0.0000319144",
-      "mark_price": "2.0025",
-      "open_interest": "3697308.1999999997",
-      "premium": "-0.0008676141",
-      "day_volume": "2675566.7495900006"
-    },
-    {
-      "symbol": "HYPER",
-      "funding_rate": "-0.0000306052",
-      "mark_price": "0.088794",
-      "open_interest": "4162068.0",
-      "premium": "-0.0003822372",
-      "day_volume": "83956.251831"
+      "funding_rate": "-0.000027822",
+      "mark_price": "306.73",
+      "open_interest": "21950.604",
+      "premium": "-0.0008469055",
+      "day_volume": "2017299.5821399994"
     },
     {
       "symbol": "COMP",
-      "funding_rate": "-0.0000291603",
-      "mark_price": "18.255",
-      "open_interest": "48291.1",
-      "premium": "-0.0006509847",
-      "day_volume": "272382.18318"
+      "funding_rate": "-0.0000269166",
+      "mark_price": "18.448",
+      "open_interest": "48481.16",
+      "premium": "-0.0001299404",
+      "day_volume": "273245.29556"
     },
     {
-      "symbol": "S",
-      "funding_rate": "-0.0000287448",
-      "mark_price": "0.040296",
-      "open_interest": "14803352.0",
-      "premium": "-0.0004212091",
-      "day_volume": "189804.981122"
+      "symbol": "TRX",
+      "funding_rate": "-0.0000181651",
+      "mark_price": "0.34805",
+      "open_interest": "43375450.0",
+      "premium": "-0.000666016",
+      "day_volume": "3567818.8024100009"
     },
     {
-      "symbol": "IP",
-      "funding_rate": "-0.0000274912",
-      "mark_price": "0.43229",
-      "open_interest": "8048714.2000000002",
-      "premium": "-0.0003235348",
-      "day_volume": "173565.7757179999"
+      "symbol": "TRUMP",
+      "funding_rate": "-0.0000155511",
+      "mark_price": "2.0106",
+      "open_interest": "3726376.2000000002",
+      "premium": "-0.0008149068",
+      "day_volume": "2377145.6213300005"
+    },
+    {
+      "symbol": "MOVE",
+      "funding_rate": "-0.0000148652",
+      "mark_price": "0.014926",
+      "open_interest": "22213364.0",
+      "premium": "-0.0006020067",
+      "day_volume": "128352.434112"
+    },
+    {
+      "symbol": "kLUNC",
+      "funding_rate": "-0.0000146367",
+      "mark_price": "0.08035",
+      "open_interest": "10114742.0",
+      "premium": "-0.0004228172",
+      "day_volume": "248011.646807"
     },
     {
       "symbol": "APT",
-      "funding_rate": "-0.0000251102",
-      "mark_price": "0.9393",
-      "open_interest": "5686749.2999999998",
-      "premium": "-0.0009571413",
-      "day_volume": "1791401.8216650004"
+      "funding_rate": "-0.0000145082",
+      "mark_price": "0.9448",
+      "open_interest": "5680891.1600000001",
+      "premium": "-0.0007401925",
+      "day_volume": "1566042.8718720009"
     },
     {
-      "symbol": "kFLOKI",
-      "funding_rate": "-0.000022592",
-      "mark_price": "0.02805",
-      "open_interest": "26061926.0",
-      "premium": "-0.0007121239",
-      "day_volume": "105140.883742"
+      "symbol": "GMT",
+      "funding_rate": "-0.0000138569",
+      "mark_price": "0.01029",
+      "open_interest": "36264082.0",
+      "premium": "-0.0004852014",
+      "day_volume": "80608.991738"
+    },
+    {
+      "symbol": "STX",
+      "funding_rate": "-0.0000125306",
+      "mark_price": "0.23802",
+      "open_interest": "2968730.3999999999",
+      "premium": "-0.0005035669",
+      "day_volume": "254540.046907"
+    },
+    {
+      "symbol": "ETH",
+      "funding_rate": "0.0000125",
+      "mark_price": "2026.1",
+      "open_interest": "652993.029",
+      "premium": "-0.0002910993",
+      "day_volume": "566134625.5808799267"
+    },
+    {
+      "symbol": "DYDX",
+      "funding_rate": "0.0000125",
+      "mark_price": "0.18779",
+      "open_interest": "31789748.6000000015",
+      "premium": "0.000479693",
+      "day_volume": "952157.1513190001"
+    },
+    {
+      "symbol": "SOL",
+      "funding_rate": "0.0000125",
+      "mark_price": "82.948",
+      "open_interest": "3895956.3200000003",
+      "premium": "-0.0003856351",
+      "day_volume": "94544495.6129300147"
+    },
+    {
+      "symbol": "AVAX",
+      "funding_rate": "0.0000125",
+      "mark_price": "8.9896",
+      "open_interest": "4736148.6600000001",
+      "premium": "-0.0001334594",
+      "day_volume": "2051895.6610980001"
+    },
+    {
+      "symbol": "BNB",
+      "funding_rate": "0.0000125",
+      "mark_price": "712.92",
+      "open_interest": "54625.054",
+      "premium": "0.0001795609",
+      "day_volume": "21778770.6026199907"
+    },
+    {
+      "symbol": "APE",
+      "funding_rate": "0.0000125",
+      "mark_price": "0.13846",
+      "open_interest": "9279519.8000000007",
+      "premium": "-0.0005050869",
+      "day_volume": "695758.0420879998"
     },
     {
       "symbol": "OP",
-      "funding_rate": "-0.0000195164",
-      "mark_price": "0.1206",
-      "open_interest": "28040455.5999999978",
-      "premium": "-0.0001656315",
-      "day_volume": "338669.879002"
+      "funding_rate": "0.0000125",
+      "mark_price": "0.12135",
+      "open_interest": "27968094.8000000007",
+      "premium": "-0.0004116921",
+      "day_volume": "298537.327096"
+    },
+    {
+      "symbol": "LTC",
+      "funding_rate": "0.0000125",
+      "mark_price": "52.337",
+      "open_interest": "261270.88",
+      "premium": "-0.0003036669",
+      "day_volume": "2200112.9572099987"
+    },
+    {
+      "symbol": "ARB",
+      "funding_rate": "0.0000125",
+      "mark_price": "0.105",
+      "open_interest": "55492083.0",
+      "premium": "-0.0004758732",
+      "day_volume": "2604845.2677830001"
+    },
+    {
+      "symbol": "DOGE",
+      "funding_rate": "0.0000125",
+      "mark_price": "0.10153",
+      "open_interest": "287914222.0",
+      "premium": "-0.0004922229",
+      "day_volume": "10614808.4903139975"
+    },
+    {
+      "symbol": "INJ",
+      "funding_rate": "0.0000125",
+      "mark_price": "6.8279",
+      "open_interest": "1154270.8",
+      "premium": "-0.0003994148",
+      "day_volume": "12065971.4145099986"
+    },
+    {
+      "symbol": "SUI",
+      "funding_rate": "0.0000125",
+      "mark_price": "0.91111",
+      "open_interest": "31809759.6000000015",
+      "premium": "-0.0003072028",
+      "day_volume": "15094465.9378280006"
+    },
+    {
+      "symbol": "kPEPE",
+      "funding_rate": "0.0000125",
+      "mark_price": "0.003444",
+      "open_interest": "4071803100.0",
+      "premium": "-0.0002901915",
+      "day_volume": "3932513.8895190004"
     }
   ],
   "high_apy_pools": [],
